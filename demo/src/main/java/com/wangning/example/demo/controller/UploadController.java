@@ -29,6 +29,7 @@ public class UploadController {
             msg = "上传成功！";
         } else {
             msg = "上传失败！";
+
         }
         // 显示图片
         map.put("msg", msg);
