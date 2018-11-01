@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("hello")
 public class HelloWordController {
 
     @RequestMapping("string")
@@ -21,7 +22,7 @@ public class HelloWordController {
 
     @RequestMapping("forward")
     public String testForward() {
-        return "forward:/test";
+        return "forward:/index";
     }
 
 
