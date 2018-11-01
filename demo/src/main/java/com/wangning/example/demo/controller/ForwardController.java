@@ -5,14 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("forward")
+@RequestMapping("pageJump")
 public class ForwardController {
 
     @RequestMapping("testForward")
     public String testForward(Model model) {
-        model.addAttribute("aaa","我是一个兵3333");
-        model.addAttribute("bbb","来自老百姓！");
+        model.addAttribute("aaa", "我是一个兵3333");
+        model.addAttribute("bbb", "来自老百姓！");
         return "index";
+    }
+
+    @RequestMapping("redirect")
+    public String redirect() {
+        return "redirect:/myh5.html";
     }
 
 }

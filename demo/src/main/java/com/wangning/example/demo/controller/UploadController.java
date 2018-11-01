@@ -19,7 +19,7 @@ public class UploadController {
      * @return
      */
     @RequestMapping("fileUpload")
-    public String upload(@RequestParam("fileName") MultipartFile file, Map<String, Object> map) {
+    public String upload(@RequestParam("fileName222") MultipartFile file, Map<String, Object> map) {
         // 要上传的目标文件存放路径
         String localPath = "D:/Photos";
         // 上传成功或者失败的提示
