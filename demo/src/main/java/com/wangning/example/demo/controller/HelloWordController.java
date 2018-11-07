@@ -7,8 +7,13 @@ import com.wangning.example.demo.entity.request.LoginReq;
 import com.wangning.example.demo.entity.response.HelloWorldResp;
 import com.wangning.example.demo.entity.response.LoginResp;
 import com.wangning.example.demo.entity.response.Result;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -16,7 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("hello")
-public class HelloWordController {
+public class HelloWordController extends BaseController {
 
     @RequestMapping("string")
     public String getString() {
@@ -65,6 +70,7 @@ public class HelloWordController {
         return json;
     }
 
+
     /**
      * 响应一个实体类
      *
@@ -99,5 +105,16 @@ public class HelloWordController {
         return result;
     }
 
-
+    /**
+     * 入参校验
+     *
+     * @param requestParam
+     * @return
+     */
+    @RequestMapping("validatedParam")
+    public HelloWorldResp validatedParam(@RequestBody @Validated HelloWorldReq requestParam) {
+        HelloWorldResp resp = new HelloWorldResp();
+        resp.setAaa(requestParam.getReq1());
+        return resp;
+    }
 }
