@@ -3,12 +3,15 @@ package com.wangning.example.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.wangning.example.demo.entity.request.HelloWorldReq;
+import com.wangning.example.demo.entity.request.LoginReq;
 import com.wangning.example.demo.entity.response.HelloWorldResp;
+import com.wangning.example.demo.entity.response.LoginResp;
+import com.wangning.example.demo.entity.response.Result;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
@@ -72,6 +75,28 @@ public class HelloWordController {
         HelloWorldResp resp = new HelloWorldResp();
         resp.setAaa("f1f1f3");
         return resp;
+    }
+
+
+    @RequestMapping("login")
+    public Result<LoginResp> login(@RequestBody(required = false) LoginReq requestParam) {
+        LoginResp resp = new LoginResp();
+        resp.setUsername("张三");
+        Result result = new Result<LoginResp>();
+        result.setData(resp);
+        return result;
+    }
+
+    @RequestMapping(value = "formUrlEncoded", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded;charset=UTF-8")
+    public Result<LoginResp> formUrlEncoded(String account, String pwd) {
+
+        System.out.println("account=" + account + ",pwd=" + pwd);
+
+        LoginResp resp = new LoginResp();
+        resp.setUsername(account);
+        Result result = new Result<LoginResp>();
+        result.setData(resp);
+        return result;
     }
 
 
