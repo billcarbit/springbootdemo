@@ -85,7 +85,8 @@ public class HelloWordController extends BaseController {
 
 
     @RequestMapping("login")
-    public Result<LoginResp> login(@RequestBody(required = false) LoginReq requestParam) {
+    public Result<LoginResp> login(@RequestBody(required = true) LoginReq requestParam) {
+        System.out.println("login");
         LoginResp resp = new LoginResp();
         resp.setUsername("张三");
         Result result = new Result<LoginResp>();
