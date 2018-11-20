@@ -2,8 +2,10 @@ package com.wangning.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.wangning.example.demo.entity.request.HelloReq;
 import com.wangning.example.demo.entity.request.HelloWorldReq;
 import com.wangning.example.demo.entity.request.LoginReq;
+import com.wangning.example.demo.entity.response.HelloResp;
 import com.wangning.example.demo.entity.response.HelloWorldResp;
 import com.wangning.example.demo.entity.response.LoginResp;
 import com.wangning.example.demo.entity.response.Result;
@@ -93,6 +95,17 @@ public class HelloWordController extends BaseController {
         result.setData(resp);
         return result;
     }
+
+    @RequestMapping("firstHello")
+    public Result<HelloResp> firstHello(@RequestBody HelloReq requestParam) {
+        System.out.println("firstHello");
+        HelloResp resp = new HelloResp();
+        resp.setGood("服务端响应成功");
+        Result result = new Result<LoginResp>();
+        result.setData(resp);
+        return result;
+    }
+
 
     @RequestMapping(value = "formUrlEncoded", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded;charset=UTF-8")
     public Result<LoginResp> formUrlEncoded(String account, String pwd) {
