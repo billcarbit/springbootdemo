@@ -1,9 +1,6 @@
 package com.wangning.example.demo.controller;
 
-import com.wangning.example.demo.entity.request.HelloReq;
 import com.wangning.example.demo.entity.request.MsgReq;
-import com.wangning.example.demo.entity.response.HelloResp;
-import com.wangning.example.demo.entity.response.LoginResp;
 import com.wangning.example.demo.entity.response.MsgItemResp;
 import com.wangning.example.demo.entity.response.Result;
 import org.springframework.web.bind.annotation.RequestBody;
