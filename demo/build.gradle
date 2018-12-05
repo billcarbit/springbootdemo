@@ -25,19 +25,21 @@ repositories {
 
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 
-	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+	implementation('org.apache.tomcat.embed:tomcat-embed-jasper')
 
 
 	implementation 'com.alibaba:fastjson:1.2.31'
-	testImplementation 'com.alibaba:fastjson:1.2.31'
+	testImplementation 'com.alibaba:fastjson:1.spring-boot-starter-web.31'
 
 	implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
 	implementation "org.springframework.boot:spring-boot-starter-validation"
 	implementation "org.springframework.boot:spring-boot-starter-aop"
 	implementation "org.springframework.boot:spring-boot-starter-websocket"
+	implementation "org.springframework.boot:spring-boot-starter-jdbc"
+	implementation "mysql:mysql-connector-java"
 
 
 
