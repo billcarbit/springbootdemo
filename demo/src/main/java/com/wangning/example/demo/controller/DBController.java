@@ -1,5 +1,7 @@
 package com.wangning.example.demo.controller;
 
+import com.wangning.example.demo.dao.UserInfoDao;
+import com.wangning.example.demo.dao.bean.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,27 +16,17 @@ import java.util.Set;
 public class DBController {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private UserInfoDao userInfoDao;
 
     @RequestMapping("/getUsers")
-    public List<Map<String, Object>> getDbType(){
-        String sql = "select * from t_user";
-        List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql);
-        for (Map<String, Object> map : list) {
-            Set<Map.Entry<String, Object>> entries = map.entrySet( );
-            if(entries != null) {
-                Iterator<Map.Entry<String, Object>> iterator = entries.iterator( );
-                while(iterator.hasNext( )) {
-                    Map.Entry<String, Object> entry =(Map.Entry<String, Object>) iterator.next( );
-                    Object key = entry.getKey( );
-                    Object value = entry.getValue();
-                    System.out.println(key+":"+value);
-                }
-            }
-        }
-        return list;
+    public List<Map<String, Object>> getDbType() {
+        return  userInfoDao.getDbType();
     }
 
+    @RequestMapping("/getDbTypeUserObject")
+    public List<UserInfo> getDbTypeUserObject() {
+        return  userInfoDao.getDbTypeUserObject();
+    }
 
 
 }
